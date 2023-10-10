@@ -9,6 +9,12 @@ import com.example.kotlin.favoritemovie.data.network.model.MovieBase
 import com.example.kotlin.favoritemovie.databinding.ItemMovieBinding
 import com.example.kotlin.favoritemovie.framework.adapters.viewholders.MovieViewHolder
 
+/**
+ * @brief This class is the adapter for the RecyclerView that will show the list of movies
+ * @author Yuna Chung A01709043
+ * @date 2023.10.10
+ * @version 1.0.0
+ */
 class MovieAdapter: RecyclerView.Adapter<MovieViewHolder>() {
     var data:ArrayList<MovieBase> = ArrayList()
     private lateinit var context: Context

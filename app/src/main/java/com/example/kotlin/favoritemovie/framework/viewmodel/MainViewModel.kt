@@ -10,6 +10,12 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**
+ * @brief ViewModel for the main activity
+ * @author Yuna Chung A01709043
+ * @date 2023.10.10
+ * @version 1.0.0
+ */
 class MainViewModel: ViewModel() {
 
     val movieObjectLiveData = MutableLiveData<MovieObject?>()
