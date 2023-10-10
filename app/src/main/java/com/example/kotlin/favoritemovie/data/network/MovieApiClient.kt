@@ -2,12 +2,12 @@ package com.example.kotlin.favoritemovie.data.network
 
 import com.example.kotlin.favoritemovie.data.network.model.movie.Movie
 class MovieApiClient {
-    private val apiService = MovieApiService()
+    private lateinit var api: MovieAPIService
 
     suspend fun getMovieList(limit:Int): com.example.kotlin.favoritemovie.data.network.model.MovieObject?{
         api = NetworkModuleDI()
         return try{
-            api.getMovieList(limit)
+            api.getPopularMovieList(limit)
         }catch (e:java.lang.Exception){
             e.printStackTrace()
             null
