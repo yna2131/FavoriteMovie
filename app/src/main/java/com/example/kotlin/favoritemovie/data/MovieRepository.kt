@@ -4,6 +4,7 @@ import com.example.kotlin.favoritemovie.data.network.MovieAPIService
 import com.example.kotlin.favoritemovie.data.network.NetworkModuleDI
 import com.example.kotlin.favoritemovie.data.network.model.MovieObject
 import com.example.kotlin.favoritemovie.data.network.model.movie.Movie
+import com.example.kotlin.favoritemovie.utils.Constants
 
 class MovieRepository() {
     private lateinit var api:MovieAPIService
@@ -11,7 +12,7 @@ class MovieRepository() {
     suspend fun getMovieList(limit:Int):MovieObject?{
         api = NetworkModuleDI()
         return try{
-            api.getPopularMovieList(limit)
+            api.getPopularMovieList(Constants.API_KEY,limit)
         }catch (e:java.lang.Exception){
             e.printStackTrace()
             null
