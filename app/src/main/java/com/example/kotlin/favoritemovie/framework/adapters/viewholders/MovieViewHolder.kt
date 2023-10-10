@@ -1,7 +1,7 @@
 package com.example.kotlin.favoritemovie.framework.adapters.viewholders
 
 import android.content.Context
-import android.content.Intent
+import android.util.Log
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -15,26 +15,13 @@ import com.example.kotlin.favoritemovie.domain.MovieInfoRequirement
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import okhttp3.Dispatcher
 
-class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root)
-    fun bind(item: MovieBase, context: Context){
-        binding.TVName.text = item.name
-        getMovieInfo(item.url,binding.IVPhoto,context)
+class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root){
+    fun bind(item: MovieBase, context:Context){
+        binding.TVName.text = item.title
+       val urlImage = "https://image.tmdb.org/t/p/original${item.poster_path}"
 
-        }
-
-    private fun getMovieInfo(url:String, imageView: ImageView, context: Context){
-        var MovieStringNumber:String = url.replace("https://api.themoviedb.org/3/movie/","")
-        MovieStringNumber = MovieStringNumber.replace("/","")
-        val MovieNumber:Int = Integer.parseInt(MovieStringNumber)
-
-        CoroutineScope(Dispatchers.IO).launch {
-            val MovieInfoRequirement = MovieInfoRequirement()
-            val result: Movie? = MovieInfoRequirement(MovieNumber)
-            CoroutineScope(Dispatchers.Main).launch {
-                val urlImage = result?.sprites?.other?.official_artwork?.front_default.toString()
-
+//        Log.d("urlImage",urlImage)
                 val requestOptions = RequestOptions()
                     .centerCrop()
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -43,8 +30,7 @@ class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.View
 
                 Glide.with(context).load(urlImage)
                     .apply(requestOptions)
-                    .into(imageView)
-        }
-    }
-    }
+                    .into(binding.IVPhoto)
+
+}
 }
