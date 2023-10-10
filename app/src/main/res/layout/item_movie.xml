@@ -9,8 +9,8 @@
     android:padding="28dp"
     >
             <ImageView
-                android:layout_width="88dp"
-                android:layout_height="88dp"
+                android:layout_width="400dp"
+                android:layout_height="400dp"
                 android:src="@mipmap/ic_launcher"
                 android:layout_gravity="center"
                 android:id="@+id/IVPhoto"

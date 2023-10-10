@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 
 class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root){
     fun bind(item: MovieBase, context:Context){
-        binding.TVName.text = item.name
+        binding.TVName.text = item.title
        val urlImage = "https://image.tmdb.org/t/p/original${item.poster_path}"
 
 //        Log.d("urlImage",urlImage)
