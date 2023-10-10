@@ -7,6 +7,12 @@ import com.example.kotlin.favoritemovie.utils.Constants
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+/**
+ * @brief ViewModel for the splashscreen activity
+ * @author Yuna Chung A01709043
+ * @date 2023.10.10
+ * @version 1.0.0
+ */
 class SplashscreenViewModel: ViewModel(){
     val finishedLoading = MutableLiveData<Boolean>()
 

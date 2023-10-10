@@ -9,6 +9,12 @@ import com.example.kotlin.favoritemovie.databinding.ActivityMainBinding
 import com.example.kotlin.favoritemovie.framework.adapters.MovieAdapter
 import com.example.kotlin.favoritemovie.framework.viewmodel.MainViewModel
 
+/**
+ * @brief This class is the main activity of the app, it will show the list of movies
+ * @author Yuna Chung A01709043
+ * @date 2023.10.10
+ * @version 1.0.0
+ */
 class MainActivity: AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val adapter: MovieAdapter = MovieAdapter()

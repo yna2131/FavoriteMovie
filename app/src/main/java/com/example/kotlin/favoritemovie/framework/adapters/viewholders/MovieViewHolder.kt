@@ -16,9 +16,16 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**
+ * @brief MovieViewHolder class
+ * @author Yuna Chung A01709043
+ * @date 2023.10.10
+ * @version 1.0.0
+ */
 class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root){
     fun bind(item: MovieBase, context:Context){
         binding.TVName.text = item.title
+        binding.TVDescription.text = item.overview
        val urlImage = "https://image.tmdb.org/t/p/original${item.poster_path}"
 
 //        Log.d("urlImage",urlImage)

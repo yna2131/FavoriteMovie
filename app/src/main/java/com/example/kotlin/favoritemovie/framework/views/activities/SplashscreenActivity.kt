@@ -9,6 +9,12 @@ import com.example.kotlin.favoritemovie.MainActivity
 import com.example.kotlin.favoritemovie.databinding.ActivitySplashscreenBinding
 import com.example.kotlin.favoritemovie.framework.viewmodel.SplashscreenViewModel
 
+/**
+ * @brief This class is the SplashscreenActivity class.
+ * @author Yuna Chung A01709043
+ * @date 2023.10.10
+ * @version 1.0.0
+ */
 class SplashscreenActivity: AppCompatActivity() {
     private lateinit var binding: ActivitySplashscreenBinding
     private val viewModel: SplashscreenViewModel by viewModels()
