@@ -4,67 +4,47 @@ import android.app.Activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.kotlin.favoritemovie.data.network.model.MovieBase
+import com.example.kotlin.favoritemovie.databinding.ActivityMainBinding
+import com.example.kotlin.favoritemovie.framework.adapters.MovieAdapter
 
 class MinActivity: Activity() {
+    private lateinit var binding: ActivityMainBinding
+    private val adapter: MovieAdapter = MovieAdapter()
+    private lateinit var data:ArrayList<MovieBase>
 
-    class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-        //Global variables
-        private lateinit var binding: ActivityMainBinding
-        private val viewModel: MainViewModel by viewModels()
-        private lateinit var currentFragment: Fragment
-        private var currentMenuOption: String? = null
-
-
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-
-            initializeBinding()
-            initializeObservers()
-            initializeListeners()
-            exchangeCurrentFragment(PokedexFragment(), Constants.MENU_POKEDEX)
-
-        }
-
-        private fun initializeListeners(){
-            binding.appBarMain.llPokedex.setOnClickListener {
-                selectMenuOption(Constants.MENU_POKEDEX)
-            }
-
-            binding.appBarMain.llSearch.setOnClickListener {
-                selectMenuOption(Constants.MENU_SEARCH)
-            }
-        }
-
-        private fun initializeBinding() {
-            binding = ActivityMainBinding.inflate(layoutInflater)
-            setContentView(binding.root)
-        }
-
-        private fun initializeObservers() {
-
-        }
-
-        private fun exchangeCurrentFragment(newFragment: Fragment, newMenuOption:String){
-            currentFragment = newFragment
-
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.nav_host_fragment_content_main,currentFragment)
-                .commit()
-
-            currentMenuOption = newMenuOption
-        }
-
-        private fun selectMenuOption(menuOption:String){
-            if(menuOption == currentMenuOption){
-                return
-            }
-
-            when(menuOption){
-                Constants.MENU_POKEDEX -> exchangeCurrentFragment(PokedexFragment(),Constants.MENU_POKEDEX)
-                Constants.MENU_SEARCH -> exchangeCurrentFragment(SearchFragment(),Constants.MENU_SEARCH)
-            }
-        }
-
+        initializeBinding()
+        setUpRecyclerView(testData())
     }
+
+    private fun initializeBinding() {
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+    }
+
+    private fun testData():ArrayList<MovieBase>{
+        var result = ArrayList<MovieBase>()
+
+        result.add(MovieBase("movie1",""))
+        result.add(MovieBase("movie2",""))
+        result.add(MovieBase("movie3",""))
+
+        return result
+    }
+
+    private fun setUpRecyclerView(dataForList:ArrayList<MovieBase>){
+        binding.RVMovie.setHasFixedSize(true)
+        val linearLayoutManager = LinearLayoutManager(
+            this,
+            LinearLayoutManager.VERTICAL,
+            false)
+        binding.RVMovie.layoutManager = linearLayoutManager
+        adapter.MovieAdapter(dataForList)
+        binding.RVMovie.adapter = adapter
+    }
+
 }

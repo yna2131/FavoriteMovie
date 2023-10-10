@@ -13,9 +13,13 @@
         android:theme="@style/Theme.FavoriteMovie"
         tools:targetApi="31" >
 
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
     <activity
-        android:name = ".MainActivity"
-        android:exported="true"
+        android:name = ".framework.views.activities.MainActivity"
+        android:exported="false"
         android:theme="@stlye/Theme.FavoriteMovie.NoActionBar"
         android:screenOrientation="portrait">
         <intent-filter>
