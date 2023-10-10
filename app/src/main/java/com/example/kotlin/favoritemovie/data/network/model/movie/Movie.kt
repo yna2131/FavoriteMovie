@@ -1,4 +1,4 @@
-package com.example.kotlin.favoritemovie.movie
+package com.example.kotlin.favoritemovie.data.network.model.movie
 
 data class Movie(
     val page: Int,
